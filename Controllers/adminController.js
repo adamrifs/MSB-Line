@@ -1,6 +1,6 @@
 const generateToken = require("../Config/utils")
 const Admin = require("../Models/adminSchema")
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 
 const adminRegister = async (req, res) => {
     try {
