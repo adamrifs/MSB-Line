@@ -4,7 +4,7 @@ const sharp = require('sharp')
 
 const addProduct = async (req, res) => {
     try {
-        const { name, description, price, comparePrice, category, color, stock, isFeatured } = req.body
+        const { name, description, price, brand, comparePrice, category, color, stock, isFeatured } = req.body
         const image1 = req.files.image1 && req.files.image1[0]
         const image2 = req.files.image2 && req.files.image2[0]
         const image3 = req.files.image3 && req.files.image3[0]
@@ -47,6 +47,7 @@ const addProduct = async (req, res) => {
             price,
             comparePrice,
             category,
+            brand,
             color: parsedColor,
             stock,
             isFeatured: isFeatured === 'true' ? true : false,
@@ -87,7 +88,7 @@ const singleProduct = async (req, res) => {
 const editProduct = async (req, res) => {
     try {
         const { id } = req.params
-        const { name, description, price, comparePrice, category, color, stock, isFeatured } = req.body
+        const { name, description, price, brand, comparePrice, category, color, stock, isFeatured } = req.body
 
         const existingProduct = await Product.findById(id)
         if (!existingProduct) {
@@ -126,6 +127,7 @@ const editProduct = async (req, res) => {
             price,
             comparePrice,
             category,
+            brand,
             color: parsedColor,
             stock,
             image: imageUrl,
